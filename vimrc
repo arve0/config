@@ -125,7 +125,7 @@ set whichwrap+=<,>,[,]
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 function! ToggleOff()
   setlocal nowrap
-  set virtualedit=all
+  set virtualedit=block
 endfunction
 function! ToggleOn()
    setlocal wrap linebreak nolist
