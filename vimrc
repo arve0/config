@@ -26,7 +26,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
-Plugin 'less-syntax'
+Plugin 'groenewege/vim-less'
 " autocomplete brackets
 Plugin 'delimitMate.vim'
 " javascript
@@ -121,34 +121,16 @@ noremap <silent> <leader>U :so ~/.vimrc<CR>
 " pointers wrap lines
 set whichwrap+=<,>,[,]
 
-" ;w -> toggle wrap and let jk go to visual lines
+" ;w -> toggle wrap
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 function! ToggleOff()
   setlocal nowrap
   set virtualedit=all
-  silent! nunmap <buffer> <Up>
-  silent! nunmap <buffer> <Down>
-  silent! nunmap <buffer> <Home>
-  silent! nunmap <buffer> <End>
-  silent! iunmap <buffer> <Up>
-  silent! iunmap <buffer> <Down>
-  silent! iunmap <buffer> <Home>
-  silent! iunmap <buffer> <End>
 endfunction
 function! ToggleOn()
    setlocal wrap linebreak nolist
    set virtualedit=
    setlocal display+=lastline
-   noremap  <buffer> <silent> k      gk
-   noremap  <buffer> <silent> j      gj
-   noremap  <buffer> <silent> <Up>   gk
-   noremap  <buffer> <silent> <Down> gj
-   noremap  <buffer> <silent> <Home> g<Home>
-   noremap  <buffer> <silent> <End>  g<End>
-   inoremap <buffer> <silent> <Up>   <C-o>gk
-   inoremap <buffer> <silent> <Down> <C-o>gj
-   inoremap <buffer> <silent> <Home> <C-o>g<Home>
-   inoremap <buffer> <silent> <End>  <C-o>g<End>
 endfunction
 function! ToggleWrap()
   if &wrap
@@ -172,8 +154,72 @@ let g:snips_github='arve0'
 " allways show position
 set ruler
 
-" wrap default on
-call ToggleOn()
-
 " markdown filetype
 autocmd BufRead,BufNew *.md set filetype=markdown
+
+" do not count underscore_ as word
+:set iskeyword-=_
+
+" for translation work -> replace nynorsk with bokmål
+function! ReplaceNN()
+    " replace common words
+    %s/Ein\([ \.]\)/En\1/ge
+    %s/ ein\([ \.]\)/ en\1/ge
+    %s/ eit\([ \.]\)/ et\1/ge
+    %s/Dei\([ \.]\)/De\1/ge
+    %s/ dei\([ \.]\)/ de\1/ge
+    %s/Frå\([ \.]\)/Fra\1/ge
+    %s/ frå\([ \.]\)/ fra\1/ge
+    %s/Gjev\([ \.]\)/Gir\1/ge
+    %s/ gjev\([ \.]\)/ gir\1/ge
+    %s/ gjevne\([ \.]\)/ gitte\1/ge
+    %s/ gjeven\([ \.]\)/ gitt\1/ge
+    %s/ høgre\([ \.]\)/ høyre\1/ge
+    %s/ høyrer\([ \.]\)/ hører\1/ge
+    %s/ inneheld\([ \.]\)/ inneholder\1/ge
+    %s/Rekne/Regne/ge
+    %s/rekne/regne/ge
+    %s/Same\([ \.]\)/Samme\1/ge
+    %s/ same\([ \.]\)/ samme\1/ge
+    %s/Sannsynet\([ \.]\)/Sannsynligheten\1/ge
+    %s/ sannsynet\([ \.]\)/ sannsynligheten\1/ge
+    %s/Sjå\([ \.]\)/Se\1/ge
+    %s/ sjå\([ \.]\)/ se\1/ge
+    %s/Tal\([ \.]\)/Tall\1/ge
+    %s/ tal\([ \.]\)/ tall\1/ge
+    %s/Talet\([ \.]\)/Antallet\1/ge
+    %s/ talet\([ \.]\)/ antallet\1/ge
+    %s/Til dømes\([ \.]\)/For eksempel\1/ge
+    %s/ til dømes\([ \.]\)/ for eksempel\1/ge
+    %s/Vere\([ \.]\)/Være\1/ge
+    %s/ vere\([ \.]\)/ være\1/ge
+    %s/Vert\([ \.]\)/Blir\1/ge
+    %s/ vert\([ \.]\)/ blir\1/ge
+    
+    " ending in a -> end with en
+    %s/\([a-zæøå]\)a\([ \.]\)/\1ene\2/ge
+
+    " ending in ane -> end with ene
+    %s/\([a-zæøå]\)ane\([ \.]\)/\1ene\2/ge
+
+    " ending in ande -> end with ende
+    %s/\([a-zæøå]\)ande\([ \.]\)/\1ende\2/ge
+
+    " ending in are -> end with ere
+    %s/\([a-zæøå]\)are\([ \.]\)/\1ere\2/ge
+
+endfunction
+noremap <silent> <Leader>nn :call ReplaceNN()<CR>
+
+function! MakeSpace()
+    " make some space between headlines
+    %s/\n;/\r\r;/ge
+endfunction
+noremap <silent> <Leader>ms :call MakeSpace()<CR>
+
+function! RemoveTranslate()
+    " remove translate
+    %s/^:*{{translate|.*$//ge
+endfunction
+noremap <silent> <Leader>rt :call RemoveTranslate()<CR>
+
