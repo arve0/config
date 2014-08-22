@@ -76,20 +76,27 @@ set autoindent
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-" toggling between tabs and 4 spaces
-function! TabToggle()
-  if &expandtab
-    set shiftwidth=8
-    set softtabstop=0
-    set noexpandtab
-  else
-    set shiftwidth=4
-    set softtabstop=4
-    set expandtab
-  endif
+" tab as tab
+function! TabT()
+  setlocal shiftwidth=8
+  setlocal softtabstop=0
+  setlocal noexpandtab
 endfunction
-" toggle tabbing with ,T
-nmap <leader>T mz:execute TabToggle()<CR>'z
+nmap <leader>TT :call TabT()<CR>
+" 2 space tab 
+function! Tab2()
+  setlocal shiftwidth=2
+  setlocal softtabstop=2
+  setlocal expandtab
+endfunction
+nmap <leader>T2 :call Tab2()<CR>
+" 4 space tab
+function! Tab4()
+  setlocal shiftwidth=4
+  setlocal softtabstop=4
+  setlocal expandtab
+endfunction
+nmap <leader>T4 :call Tab4()<CR>
 
 " default delimitmate
 autocmd BufNewFile,BufRead * let delimitMate_matchpairs = "(:),[:],{:}"
