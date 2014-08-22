@@ -47,7 +47,8 @@ Plugin 'vim-scripts/YankRing.vim'
 "Plugin 'garbas/vim-snipmate'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-
+" colon and semicolon
+Plugin 'lfilho/cosco.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -223,3 +224,7 @@ function! RemoveTranslate()
 endfunction
 noremap <silent> <Leader>rt :call RemoveTranslate()<CR>
 
+
+" key mappings cosco.vim
+autocmd FileType javascript,css noremap <silent> <Leader>; :call cosco#commaOrSemiColon()<CR>
+autocmd FileType javascript,css inoremap <silent> <Leader>; <c-o>:call cosco#commaOrSemiColon()<CR>
