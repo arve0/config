@@ -29,8 +29,9 @@ if [ -x /usr/libexec/path_helper ]; then
 fi
 
 # Virutalenvwrapper
-export PROJECT_HOME='~/Dokumenter/git'
+export PROJECT_HOME='/Users/arve/Dokumenter/git/'
 source /usr/local/bin/virtualenvwrapper.sh
+alias mp='mkproject -f -p /usr/local/bin/python3'
 
 # aliases
 alias in='ipython notebook'
