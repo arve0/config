@@ -1,0 +1,33 @@
+[user]
+    name = arve0
+    email = arve.seljebu@gmail.com
+[push]
+    default = simple
+[filter "media"]
+    clean = git-media-clean %f
+    smudge = git-media-smudge %f
+
+[alias]
+    a = add
+    aa = add .
+    aaa = add . --all
+    b = branch
+    c = commit -m
+    ca = commit -am
+    ch = checkout
+    d = diff
+    ds = diff --staged
+    l = log --decorate --oneline
+    p = push
+    pt = push --tags
+    r = remote
+    s = status
+    unstage = reset HEAD
+    amend = commit --amend
+[credential]
+    helper = osxkeychain
+[core]
+    editor = vim
+
+[mergetool "nbmerge"]
+    cmd = nbmerge $LOCAL $BASE $REMOTE $MERGED
