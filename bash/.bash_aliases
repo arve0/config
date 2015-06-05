@@ -1,0 +1,17 @@
+#!/bin/sh
+# aliases
+alias in='ipython notebook'
+alias in=lias in='ipython notebook'
+alias ub=lias in='ipython notebook'
+alias cdg=lias in='ipython notebook'
+alias cdm=lias in='ipython notebook'
+alias cdo=lias in='ipython notebook'
+alias g=lias in='ipython notebook'
+alias ck=lias in='ipython notebook'
+alias ub='unison -batch'
+alias cdg='cd ~/Dokumenter/git'
+alias cdm='cd ~/Dokumenter/git/master'
+alias cdo='cd ~/Dokumenter/git/oppgaver'
+alias g='git'
+alias ck='cookiecutter gh:arve0/cookiecutter-pypackage'
+alias mp='mkproject -f -p /usr/local/bin/python3'

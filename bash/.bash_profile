@@ -31,16 +31,9 @@ fi
 # Virutalenvwrapper
 export PROJECT_HOME='/Users/arve/Dokumenter/git/'
 source /usr/local/bin/virtualenvwrapper.sh
-alias mp='mkproject -f -p /usr/local/bin/python3'
 
 # aliases
-alias in='ipython notebook'
-alias ub='unison -batch'
-alias cdg='cd ~/Dokumenter/git'
-alias cdm='cd ~/Dokumenter/git/master'
-alias cdo='cd ~/Dokumenter/git/oppgaver'
-alias g='git'
-alias ck='cookiecutter gh:arve0/cookiecutter-pypackage'
+source ~/.bash_aliases
 
 # git autocomplete
 if [ -f ~/.git-completion.bash ]; then
