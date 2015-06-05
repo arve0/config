@@ -1,2 +1,4 @@
 *.swp
 .unison*
+vim/swap
+.netrwhist
