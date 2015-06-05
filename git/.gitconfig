@@ -16,14 +16,16 @@
     ca = commit -am
     ch = checkout
     d = diff
+    drt = !sh -c 'git push origin :refs/tags/$1' -
     ds = diff --staged
     l = log --decorate --oneline
     p = push
     pt = push --tags
     r = remote
     s = status
-    unstage = reset HEAD
+    unstage = reset HEAD --
     amend = commit --amend
+    last = log -1 HEAD
 [credential]
     helper = osxkeychain
 [core]
