@@ -40,7 +40,7 @@ alias cdg='cd ~/Dokumenter/git'
 alias cdm='cd ~/Dokumenter/git/master'
 alias cdo='cd ~/Dokumenter/git/oppgaver'
 alias g='git'
-
+alias ck='cookiecutter gh:arve0/cookiecutter-pypackage'
 
 # git autocomplete
 if [ -f ~/.git-completion.bash ]; then
@@ -48,9 +48,11 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 # added by Miniconda3 3.7.0 installer
-#export PATH="/Users/arve/miniconda3/bin:$PATH"
+export PATH="$PATH:/Users/arve/miniconda3/bin"
 
 # Setting PATH for Python 3.4
 # The orginal version is saved in .bash_profile.pysave
-#PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:${PATH}"
-#export PATH
+export PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:${PATH}"
+
+# Haskell Platform
+export PATH="$HOME/Library/Haskell/bin:$PATH"
