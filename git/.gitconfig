@@ -19,6 +19,7 @@
     d = diff
     drt = !sh -c 'git push origin :refs/tags/$1' -
     ds = diff --staged
+    dt = difftool
     l = log --decorate --oneline
     p = push
     pt = push --tags
@@ -31,3 +32,9 @@
     helper = osxkeychain
 [core]
     editor = vim
+[diff]
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[difftool]
+	prompt = false
