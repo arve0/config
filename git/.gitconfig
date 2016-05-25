@@ -15,6 +15,7 @@
     c = commit -m
     ca = commit -am
     ch = checkout
+    cl = !sh -c 'git clone https://github.com/$1' -
     d = diff
     drt = !sh -c 'git push origin :refs/tags/$1' -
     ds = diff --staged
@@ -30,6 +31,3 @@
     helper = osxkeychain
 [core]
     editor = vim
-
-[mergetool "nbmerge"]
-    cmd = nbmerge $LOCAL $BASE $REMOTE $MERGED
