@@ -1,0 +1,7 @@
+alias c=pbcopy
+alias p=pbpaste
+alias secure-dns="sudo networksetup -setdnsservers Wi-Fi 127.0.0.1"
+alias reset-dns="sudo networksetup -setdnsservers Wi-Fi empty"
+alias disable-secure-dns=reset-dns
+alias copy-password="security find-generic-password -a arve.seljebu@knowit.no -s knowit -w | pbcopy"
+

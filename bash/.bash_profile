@@ -1,28 +1,20 @@
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	source .bash_osx
+fi
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/arve/.sdkman"
-[[ -s "/Users/arve/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/arve/.sdkman/bin/sdkman-init.sh"
+if [ -f .bash_aliases ]; then
+	source .bash_aliases
+fi
 
 source ~/.git-completion.bash
+# autocomplete for g (git alias)
+__git_complete g __git_main
+
+# back dir
 source ~/.bd-completion.bash
 
-export PATH="/Users/arve/.bin:/Users/arve/miniconda3/bin:$PATH"
-
-alias g=git
-alias s="git status"
-alias got=git
-alias gut=git
-alias gi=git
-alias bd=". bd -si"
-alias password="openssl rand -base64 32"
-alias c=pbcopy
-alias p=pbpaste
-alias cb="git-branch | sed 's/ //' | pbcopy"
-alias fn="find . -iname"
-alias secure-dns="sudo networksetup -setdnsservers Wi-Fi 127.0.0.1"
-alias reset-dns="sudo networksetup -setdnsservers Wi-Fi empty"
+export PATH="/Users/arve/.bin:$PATH"
+export LANG=en_US
 
 # oracle sql plus
 export ORACLE_HOME=~/Applications/oracle/product/instantclient_64/11.2.0.4.0
@@ -32,6 +24,7 @@ alias sp="rlwrap -if . sqlplus nvms_data/nvms_data@vegloggen"
 alias spa="rlwrap -if . sqlplus nvmsdata_a/nvmsdata_a@vegloggen"
 alias spb="rlwrap -if . sqlplus nvmsdata_b/nvmsdata_b@vegloggen"
 
+# rust cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # terminal prefix
@@ -44,6 +37,7 @@ function update_prompt {
 }
 PROMPT_COMMAND=update_prompt
 
+# ruby env for homebrew
 eval "$(rbenv init -)"
 
 # Eternal bash history.
@@ -62,3 +56,12 @@ PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # fuzzy searching, CTRL-T, CTRL-R
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# node version manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# manage jvm/scala versions
+export SDKMAN_DIR="/Users/arve/.sdkman"
+[[ -s "/Users/arve/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/arve/.sdkman/bin/sdkman-init.sh"
+
